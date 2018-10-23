@@ -3,10 +3,16 @@ head,
 body{
   background-image: url("https://images.pexels.com/photos/988872/pexels-photo-988872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
 }
-
+.page-header{
+  width: auto;
+}
 .logo {
   width: 150px;
   heiht: 150px;
+}
+.logo2 {
+  width: 75px;
+  height: 75px;
 }
 
 .Nadpis {
@@ -39,31 +45,25 @@ text-align:center;
   font-size: 10px;
 }
 
-.sizex{
-  height:35px;
-  width:80px;
-  text-align: center;
-}
-
-.sizey{
-  height:35px;
-  width:250px;
-  text-align: center;
-}
-
-.sizez{
-  height:35px;
-  width:125px;
-  text-align: center;
-}
-
-.bfade1,
-.bfade2,
-.bfade3{
+.bfade1{
   padding-bottom:4px;
+  height:30px;
+  width:120px;
   margin:5px;
 }
 
+.bfade2{
+  padding-bottom:4px;
+  height:30px;
+  width:120px;
+  margin:5px;
+}
+
+#button1{
+  padding-bottom:4px;
+  height:30px;
+  width:250px;
+}
 
 #tlc1:hover{
   background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
@@ -72,11 +72,17 @@ text-align:center;
   border: 0.5px groove black;
 }
 
-.bfade1:hover{
+#button1:hover{
   background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-color:white;
   color:black;
   border: 0.5px groove black;
+}
+
+#button2{
+  padding-bottom:4px;
+  height:30px;
+  width:250px;
 }
 
 #button3{
@@ -84,7 +90,7 @@ text-align:center;
 }
 
 
-.bfade2:hover{
+#tlc2:hover{
   background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
   background-color:white;
   color:teal;
@@ -104,15 +110,64 @@ text-align:center;
   color:teal;
   border: 0.5px groove teal;
 }
+#space {
+    margin-top: 10%;
+}
+#container {
+    width:auto;
+    text-align: center;
+}
+#formular {
+
+}
+#formname {
+    color: blue;
+
+
+}
+#linka {
+
+}
+#box{
+
+}
+#datum{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 35px;
+}
+#vypln{
+  width: 240px;
+}
+
+header {
+  font-size: 50px;
+  padding: 5%;
+}
+
+tr.tabel {
+   font-size:35px;
+   text-align: left;
+   font-style: normal;
+   font-weight: bold;
+   }
+
+tr.tabel2 {
+      font-size:20px;
+      padding-left: 20%;
+    }
+td {
+  padding-top: 8px;
+}
 
 #str{
   text-align: center;
 }
 
-#t1{
+#text1{
   text-align: center;
 }
 
-#t2{
+#text2{
   text-align: center;
 }
