@@ -1,0 +1,22 @@
+.btn{
+  float: right;
+}
+@media (max-width: 700px){
+  .book{
+    margin: 1% 1% 0 1%;
+    width: 100%;
+  }
+}
+@media (min-width: 700px){
+  .book{
+    margin: 1% 1% 0 1%;
+    width: 48%;
+  }
+}
+
+@media (min-width: 993px){
+  .book{
+    margin: 1% 1% 0 1%;
+    width: 31%;
+  }
+}
