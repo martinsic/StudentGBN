@@ -89,3 +89,7 @@ input[type=number].noarrows::-webkit-outer-spin-button {
 input::-webkit-calendar-picker-indicator{
     display: none;
 }
+.plus{
+  width: 120%;
+  height: 120%;
+}
