@@ -1,6 +1,39 @@
 .btn{
   float: right;
 }
+
+.content{
+  padding: 2rem 2rem;
+}
+
+.reservation{
+  margin: 1%;
+}
+
+.content{
+  width: 60%;
+  float: right;
+}
+
+.history{
+  background-color: #555555;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.history:hover{
+  background-color: white;
+  color: black;
+  border: 1px solid #555555;
+}
+
 @media (max-width: 700px){
   .book{
     margin: 1% 1% 0 1%;
@@ -18,5 +51,16 @@
   .book{
     margin: 1% 1% 0 1%;
     width: 31%;
+  }
+}
+
+@media (max-width: 993px){
+  .content{
+    width: 100%;
+    float: none;
+  }
+
+  .title{
+    text-align: center;
   }
 }
