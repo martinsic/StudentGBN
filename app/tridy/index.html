@@ -25,14 +25,14 @@
             </div>
             <div id="container">
         <form action="verify.php" method="POST">
-<!--<?php
+<?php
 if (isset($_GET["wrongdata"])){
 	echo "<div class=\"group\" style=\"text-align: center; font-size: 16px; color: #4A89DC; font-style: italic;\">Invalid username or password!</div>";
 }
 if (isset($_GET["logout"])){
   echo "<div class=\"group\" style=\"text-align: center; font-size: 14px; color: #38b200; font-style: italic;\">You Have Been Succesfully Logged Out. See You Soon!</div>";
 } if (!isset($_GET["wrongdata"]) and !isset($_GET["logout"])) echo "<br>";
-?>-->
+?>
 			<div class="formgroup"><i><input type="text" name="login" placeholder="Uživatelské jméno" required><span class="bar"></span></i></div>
 			<div class="formgroup"><i><input type="password" name="password" placeholder="Heslo" required><span class="bar"></span></i></div>
 			<input type="submit" class="submit btn btn-primary" name="ok" value="Přihlásit se">
