@@ -1,0 +1,49 @@
+#space {
+    margin-top: 10%;
+}
+#container {
+    width:auto;
+    text-align: center;
+}
+#formular {
+
+}
+#formname {
+    color: blue;
+
+
+}
+#linka {
+
+}
+#box{
+
+}
+#datum{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 35px;
+}
+#vypln{
+  width: 240px;
+}
+header{
+     font-size: 50px;
+       padding: 5%;
+   }
+tr.tabel{
+    font-size:35px;
+        text-align: left;
+           font-style: normal;
+               font-weight: bold;
+                 }
+tr.tabel2{
+     font-size:20px;
+        padding-left: 20%;
+          }
+td{
+    padding-top: 8px;
+   }
+a{
+    color: black;
+  }
