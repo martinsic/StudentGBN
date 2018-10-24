@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <title>Add book</title>
+</head>
+<body>
+  <button type="button" class="addbtn float-right" data-toggle="modal" data-target="#addModal" data-whatever="@getbootstrap"><i class="fas fa-plus fa-2x"></i></button>
+  <!-- pop up for adding book -->
+      <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addModalLabel">Add Book</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <!-- NAME -->
+                <div class="form-group row">
+                  <label for="inputName" class="col-sm-2 col-form-label">Name:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputName" placeholder="Name" size="150" required>
+                  </div>
+                </div>
+                <!-- AUTHOR -->
+                <div class="form-group row">
+                  <label for="inputAuthor" class="col-sm-2 col-form-label">Author:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputAuthor" placeholder="Author" size="150" required>
+                  </div>
+                </div>
+                <!-- IBSN -->
+                <div class="form-group row">
+                  <label for="inputIBSN" class="col-sm-2 col-form-label">IBSN:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control noarrows" id="inputIBSN" placeholder="IBSN" required>
+                  </div>
+                </div>
+                <!-- NUMPG -->
+                <div class="form-group row">
+                  <label for="inputNumpg" class="col-sm-2 col-form-label">Numpg:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control noarrows" id="inputNumpg" placeholder="Numpg" required>
+                  </div>
+                </div>
+                <!-- PUBYEAR -->
+                <div class="form-group row">
+                  <label for="inputPubyear" class="col-sm-2 col-form-label">Pubyear:</label>
+                  <div class="col-sm-10">
+                    <input type="date" class="form-control" id="inputPubyear" placeholder="Pubyear" name="pubyear" required>
+                  </div>
+                </div>
+                <!-- PUBLISHER -->
+                <div class="form-group row">
+                  <label for="inputPublisher" class="col-sm-2 col-form-label">Publisher:</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="inputPublisher" placeholder="Publisher" required>
+                  </div>
+                </div>
+                <!-- LEVEL -->
+                <div class="form-group row">
+                  <label for="inputLevel" class="col-sm-2 col-form-label">Level:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control" id="inputLevel" placeholder="Level" name="level" min="1"  max="6" required>
+                  </div>
+                </div>
+                <!-- VOCABULARY -->
+                <div class="form-group row">
+                  <label for="inputVocabulary" class="col-sm-2 col-form-label">Vocabulary:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control noarrows" id="inputVocabulary" placeholder="Vocabulary" required>
+                  </div>
+                </div>
+                <!-- EVNUM -->
+                <div class="form-group row">
+                  <label for="inputEvnum" class="col-sm-2 col-form-label">Evnum:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control noarrows" id="inputEvnum" placeholder="Evnum" required>
+                  </div>
+                </div>
+                <!-- EDITION -->
+                <div class="form-group row">
+                  <label for="inputEdition" class="col-sm-2 col-form-label">Edition:</label>
+                  <div class="col-sm-10">
+                    <input type="number" class="form-control noarrows" id="inputEdition" placeholder="Edition" required>
+                  </div>
+                </div>
+                <!-- GENRE -->
+                <div class="form-group row">
+                  <label for="inputGenre" class="col-sm-2 col-form-label">Genre:</label>
+                  <div class="col-sm-10">
+                    <select class="form-control" id="inputGenre">
+                      <option>Science</option>
+                      <option>Fantasy</option>
+                      <option>Drama</option>
+                      <option>Mystery</option>
+                      <option>Romance</option>
+                    </select>
+                  </div>
+                </div>
+                <!-- ANOTATION -->
+                <div class="form-group">
+                  <label for="inputAnotation" class="col-form-label">Anotation:</label>
+                  <textarea class="form-control" id="inputAnotation"></textarea>
+                </div>
+                <!-- NOTES -->
+                <div class="form-group">
+                  <label for="inputNotes" class="col-form-label">Notes:</label>
+                  <textarea class="form-control" id="inputNotes"></textarea>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary">Add Book</button>
+            </div>
+          </div>
+        </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</body>
+</html>
