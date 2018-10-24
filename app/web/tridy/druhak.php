@@ -62,7 +62,7 @@
     <td> </td>
     <td> Anglický jazyk </td>
     <td> </td>
-    <td><a href="https://sites.google.com/a/gbn.cz/tv/sportovni-kurzy/lyzarsky-kurz-kvinta"> Lyžařský kurz </a></td>
+    <td><a href="https://sites.google.com/a/gbn.cz/tv/sportovni-kurzy/prirodovedne-telovychovna-exkurze-2-rocnik"> Tělovýchovná exkurze, Bovec </a></td>
     <td> </td>
     <td> Volejbal </td>
     <td> </td>
