@@ -41,7 +41,7 @@ if (isset($_GET["logout"])){
           </div>
         </div>
       </div>
-    </div>  
+    </div>
    <h1 class="Nadpis">Stopařův průvodce po Gymnáziu Benešov</h1>
    <br>
 
@@ -74,11 +74,6 @@ if (isset($_GET["logout"])){
   <a id="tlc2"class="btn btn-info bfade2 sizez" href="./tridy/druhak.php" role="button">Druhý ročník</a>
   <a id="tlc2" class="btn btn-info bfade2 sizez" href="./tridy/tretak.php" role="button">Třetí ročník</a>
   <a id="tlc2" class="btn btn-info bfade2 sizez" href="./tridy/ctvrtak.php" role="button">Čtvrtý ročník</a>
-</div>
-
-
-<div id="str">
-<a id="tlc3"class="btn btn-success bfade3 sizey" href="www.gbn.cz/ca2018/#aktivity" role="button">List všech aktivit</a>
 </div>
 
 
