@@ -59,7 +59,9 @@ footer{
 .title-link{
   color: black;
 }
-
+.twolines{
+  height: 75px;
+}
 .title-ln{
   width: 100%;
   overflow : hidden;
