@@ -1,0 +1,230 @@
+html,
+head,
+body{
+  background-image: url("https://images.pexels.com/photos/988872/pexels-photo-988872.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260")
+  
+}
+
+.zoznam{
+	font-size: 0px;
+}
+
+.eq{
+	font-size: 0px;
+}
+
+.souhrn{
+	font-size: 0px;
+}
+
+.logo {
+  width: 115px;
+  heiht: 115px;
+}
+
+.Nadpis {
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  text-align: center;
+  font-size: 75px;
+}
+
+.Nadpis2{
+  font-family: Helvetica;
+  color:ForestGreen;
+}
+
+.right{
+  float:right;
+}
+
+.left{
+  float:left;
+}
+
+.center{
+text-align:center;
+}
+
+.login{
+  color:SeaGreen;
+  font-family: Arial;
+  font-size: 10px;
+  height: 30px;
+  width: 80px;
+}
+
+.sizex{
+  height:35px;
+  width:80px;
+  text-align: center;
+}
+
+.sizey{
+  height:35px;
+  width:250px;
+  text-align: center;
+}
+
+.sizez{
+  height:35px;
+  width:125px;
+  text-align: center;
+}
+
+.bfade1,
+.bfade2,
+.bfade3{
+  padding-bottom:4px;
+  margin:5px;
+}
+
+
+#tlc1:hover{
+  background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color:white;
+  color:black;
+  border: 0.5px groove black;
+}
+
+.bfade1:hover{
+  background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color:white;
+  color:black;
+  border: 0.5px groove black;
+}
+
+#button3{
+  text-align: center;
+}
+
+
+.bfade2:hover{
+  background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color:white;
+  color:teal;
+  border: 0.5px groove teal;
+}
+
+#tlc3:hover{
+  background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color:white;
+  color:green;
+  border: 0.5px groove green;
+}
+
+#button2:hover{
+  background-image: url("https://images.pexels.com/photos/951240/pexels-photo-951240.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-color:white;
+  color:teal;
+  border: 0.5px groove teal;
+}
+
+#str{
+  text-align: center;
+}
+
+#t1{
+  text-align: center;
+}
+
+#t2{
+  text-align: center;
+}
+input{
+	padding: 5px;
+	-webkit-appearance: none;
+	display: block;
+	background: #f5f5f5;
+	color: #535353;
+	width: 100%;
+	border: none;
+	border-radius: 2px;
+	border-bottom: 1px solid #757575;
+
+}
+
+input:focus { outline: none; }
+
+.formgroup{margin-bottom: 25px;
+}
+
+.bar {
+	position: relative;
+	display: block;
+	width: 100%;
+}
+
+.bar:before, .bar:after {
+	content: '';
+	height: 2px; 
+	width: 0;
+	bottom: 1px; 
+	position: absolute;
+	background: #4a89dc; 
+	-webkit-transition: all 0.2s ease; 
+	transition: all 0.2s ease;
+}
+
+.bar:before { left: 50%; }
+
+.bar:after { right: 50%; }
+
+input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
+
+.submit{
+margin: 5px 0px 10px;
+}
+
+.nadpis{font-size: 32px;
+}
+
+#space {
+    margin-top: 10%;
+}
+#container {
+    width:auto;
+    text-align: center;
+}
+#formular {
+
+}
+#formname {
+    color: blue;
+
+
+}
+#linka {
+
+}
+#box{
+
+}
+#datum{
+  margin-top: 7px;
+  margin-bottom: 7px;
+  margin-left: 35px;
+}
+#vypln{
+  width: 240px;
+}
+
+header {
+  font-size: 50px;
+  padding: 5%;
+}
+
+tr.tabel {
+   font-size:35px;
+   text-align: left;
+   font-style: normal;
+   font-weight: bold;
+   }
+
+tr.tabel2 {
+      font-size:20px;
+      padding-left: 20%;
+    }
+td {
+  padding-top: 8px;
+}
