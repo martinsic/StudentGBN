@@ -9,7 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="Site">
+    <main class="Site-content">
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
       <a class="navbar-brand" href="#">Navbar</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,27 +51,46 @@
 
 
     <div class="container">
-      <button type="button" class="addbtn float-right" data-toggle="modal" data-target="#addModal" data-whatever="@getbootstrap"><i class="fas fa-plus fa-2x"></i></button>
+      <button type="button" class="addbtn float-right edit" data-toggle="modal" data-target="#addModal" data-whatever="@getbootstrap"><i class="fas fa-plus fa-2x"></i></button>
       <div class="clearfix"></div>
       <div class="row" style="margin: 0 auto;">
         <div class="book">
           <div class="card" >
+            <div class="wraper">
+              <div class="btn-group float-right buttons" role="group">
+                <button type="button" class="addbtn edit"><i class="fas fa-edit"></i></button>
+                <button type="button" class="addbtn delete" name="button"><i class="far fa-times-circle"></i></button>
+
+              </div>
             <div class="card-body">
-              <div class="btn-group float-right" role="group" aria-label="Basic example">
-              <button class="addbtn"><i class="fas fa-check fa-2x"></i></button>
-              <button class="addbtn"><i class="fas fa-times fa-2x"></i></button>
-              <button class="addbtn"><i class="fas fa-edit fa-2x"></i></button>
-            </div>
               <div class="float-left">
-                <h3>Title of the Book</h3>
-                <small>Written By: Author</small>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doe</small>
               </div>
               <div class="clearfix"></div>
               <div class='float-left'>
                 <p>Level: B1</p>
               </div>
               <div class="float-right">
-                <a href="#" class="btn btn-primary float-right btn-warning">Reserve</a>
+                <a href="#" class="btn btn-success float-right"><strong>Book</strong></a>
+              </div>
+            </div>
+          </div>
+          </div>
+        </div>
+        <div class="book">
+          <div class="card" >
+            <div class="card-body">
+              <div>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doe</small>
+              </div>
+
+              <div class='float-left'>
+                <p>Level: B1</p>
+              </div>
+              <div class="float-right">
+                <a href="#" class="btn float-right yellow"><strong>Waiting</strong></a>
               </div>
             </div>
           </div>
@@ -79,15 +99,15 @@
           <div class="card" >
             <div class="card-body">
               <div>
-                <h3>Title</h3>
-                <small>Written By: Author</small>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doe</small>
               </div>
 
               <div class='float-left'>
                 <p>Level: B1</p>
               </div>
               <div class="float-right">
-                <a href="#" class="btn btn-primary float-right btn-success">Reserve</a>
+                <a href="#" class="btn btn-warning float-right" style="color: white;"><strong>Reserve</strong></a>
               </div>
             </div>
           </div>
@@ -96,15 +116,15 @@
           <div class="card" >
             <div class="card-body">
               <div>
-                <h3>Title</h3>
-                <small>Written By: Author</small>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doe</small>
               </div>
 
               <div class='float-left'>
                 <p>Level: B1</p>
               </div>
               <div class="float-right">
-                <a href="#" class="btn btn-primary float-right btn-danger">Reserve</a>
+                <a href="#" class="btn float-right btn-danger"><strong>Unavailable</strong></a>
               </div>
             </div>
           </div>
@@ -113,15 +133,83 @@
           <div class="card" >
             <div class="card-body">
               <div>
-                <h3>Title</h3>
-                <small>Written By: Author</small>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doe</small>
               </div>
 
               <div class='float-left'>
                 <p>Level: B1</p>
               </div>
               <div class="float-right">
-                <a href="#" class="btn btn-primary float-right btn-primary">Reserve</a>
+                <a href="#" class="btn btn-primary float-right btn-success"><strong>Book</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="book">
+          <div class="card" >
+            <div class="card-body">
+              <div>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doe</small>
+              </div>
+
+              <div class='float-left'>
+                <p>Level: B1</p>
+              </div>
+              <div class="float-right">
+                <a href="#" class="btn btn-primary float-right btn-success"><strong>Book</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="book">
+          <div class="card" >
+            <div class="card-body">
+              <div>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doer</small>
+              </div>
+
+              <div class='float-left'>
+                <p>Level: B1</p>
+              </div>
+              <div class="float-right">
+                <a href="#" class="btn float-right btn-success"><strong>Book</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="book">
+          <div class="card" >
+            <div class="card-body">
+              <div>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doer</small>
+              </div>
+
+              <div class='float-left'>
+                <p>Level: B1</p>
+              </div>
+              <div class="float-right">
+                <a href="#" class="btn float-right btn-success"><strong>Book</strong></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="book">
+          <div class="card" >
+            <div class="card-body">
+              <div>
+                <h3>Sample Title of the Book</h3>
+                <small>Written By: John Doer</small>
+              </div>
+
+              <div class='float-left'>
+                <p>Level: B1</p>
+              </div>
+              <div class="float-right">
+                <a href="#" class="btn float-right btn-success"><strong>Book</strong></a>
               </div>
             </div>
           </div>
@@ -161,42 +249,53 @@
               <div class="form-group row">
                 <label for="inputIBSN" class="col-sm-2 col-form-label">IBSN:</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control noarrows" id="inputIBSN" placeholder="IBSN" required>
+                  <input type="number" class="form-control noarrows" id="inputIBSN" placeholder="IBSN">
                 </div>
               </div>
               <!-- NUMPG -->
               <div class="form-group row">
                 <label for="inputNumpg" class="col-sm-2 col-form-label">Numpg:</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control noarrows" id="inputNumpg" placeholder="Numpg" required>
+                  <input type="number" class="form-control noarrows" id="inputNumpg" placeholder="Numpg">
                 </div>
               </div>
               <!-- PUBYEAR -->
               <div class="form-group row">
                 <label for="inputPubyear" class="col-sm-2 col-form-label">Pubyear:</label>
                 <div class="col-sm-10">
-                  <input type="date" class="form-control" id="inputPubyear" placeholder="Pubyear" name="pubyear" required>
+                  <input type="date" class="form-control" id="inputPubyear" placeholder="Pubyear" name="pubyear">
                 </div>
               </div>
               <!-- PUBLISHER -->
               <div class="form-group row">
                 <label for="inputPublisher" class="col-sm-2 col-form-label">Publisher:</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPublisher" placeholder="Publisher" required>
+                  <input type="text" class="form-control" id="inputPublisher" placeholder="Publisher">
                 </div>
               </div>
               <!-- LEVEL -->
               <div class="form-group row">
                 <label for="inputLevel" class="col-sm-2 col-form-label">Level:</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="inputLevel" placeholder="Level" name="level" min="1"  max="6" required>
+                  <select class="form-control" id="inputGenre">
+                    <option>0</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                  </select>
                 </div>
               </div>
               <!-- VOCABULARY -->
               <div class="form-group row">
                 <label for="inputVocabulary" class="col-sm-2 col-form-label">Vocabulary:</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control noarrows" id="inputVocabulary" placeholder="Vocabulary" required>
+                  <input type="number" class="form-control noarrows" id="inputVocabulary" placeholder="Vocabulary">
                 </div>
               </div>
               <!-- EVNUM -->
@@ -210,7 +309,7 @@
               <div class="form-group row">
                 <label for="inputEdition" class="col-sm-2 col-form-label">Edition:</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control noarrows" id="inputEdition" placeholder="Edition" required>
+                  <input type="number" class="form-control noarrows" id="inputEdition" placeholder="Edition">
                 </div>
               </div>
               <!-- GENRE -->
@@ -245,7 +344,8 @@
         </div>
       </div>
     </div>
-
+    </main>
+    <footer class="mt-5"><div class="container"><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p></div></footer>
 
     <script defer src="https://use.fontawesome.com/releases/v5.4.1/js/all.js" integrity="sha384-L469/ELG4Bg9sDQbl0hvjMq8pOcqFgkSpwhwnslzvVVGpDjYJ6wJJyYjvG3u8XW7" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
