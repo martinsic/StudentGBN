@@ -56,27 +56,47 @@ footer{
   width: 900px;
   margin: auto;
 }
+.title-link{
+  color: black;
+}
+
+.title-ln{
+  width: 100%;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.title-link:hover{
+  text-decoration: none;
+  color: #007bff;
+}
 @media (max-width: 700px){
   .book{
     margin: 1% 1% 0 1%;
     width: 100%;
   }
+
 }
 @media (min-width: 700px){
   .book{
     margin: 1% 1% 0 1%;
     width: 48%;
   }
+
 }
 
-@media (min-width: 993px){
+@media (min-width: 995px){
   .book{
     margin: 1% 1% 0 1%;
     width: 31%;
   }
+
 }
 
-@media (max-width: 993px){
+
+@media (max-width: 995px){
   .content{
     width: 100%;
     float: none;
@@ -93,13 +113,18 @@ svg {
   border-radius: 100%;
 }
 
-.addbtn{
+.button{
   color: #007bff;
   border: none;
   background-color: transparent;
-  padding: 0 5px 0 0;
+  padding: 0;
 }
 
+.addbtn{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
 .buttons{
   top: -13px;
   right: -12px;
@@ -114,8 +139,10 @@ svg {
 }
 .edit:hover{
   color: #0069d9;
+  padding: 0 5px;
 }
 .edit{
+  padding: 0 5px;
   color: #007bff;
 }
 input[type=number].noarrows::-webkit-inner-spin-button,
