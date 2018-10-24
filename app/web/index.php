@@ -76,8 +76,9 @@ if (isset($_GET["logout"])){
   <a id="tlc2" class="btn btn-info bfade2 sizez" href="./tridy/ctvrtak.php" role="button">Čtvrtý ročník</a>
 </div>
 
-
-
+<?php
+	include 'vs_a_maturita.php'	  
+?>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript">
   $("#text1").hide();
