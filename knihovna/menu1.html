@@ -453,3 +453,341 @@ booklist();
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<?php
+function bookdetail($idk){
+	foreach($GLOBALS as $name => $value) global $$name;
+	$sql = "SELECT knih_knihy.id,knih_knihy.name,knih_knihy.author,knih_knihy.isbn,knih_knihy.numpg,knih_knihy.pubyear,knih_knihy.publisher,knih_knihy.level,knih_knihy.topic,knih_knihy.edition,knih_knihy.genre,knih_knihy.anotation,knih_knihy.notes,knih_knihy.type,knih_knihy.removed,knih_vypujcky.id as vypid,knih_vypujcky.id_kniha,knih_vypujcky.email_uzivatel,knih_vypujcky.id_knihovna,knih_vypujcky.datum_vypujcky,knih_vypujcky.bor_months,knih_vypujcky.datum_vraceni,knih_vypujcky.vypujcil FROM knih_knihy LEFT JOIN knih_vypujcky ON knih_vypujcky.id_kniha=knih_knihy.id AND knih_vypujcky.datum_vraceni='0000-00-00' WHERE knih_knihy.id='" . $idk . "'";
+	$result = mysqli_query($link,$sql);
+	if(mysqli_affected_rows($link) == 1){
+		$q = mysqli_fetch_assoc($result);
+		if($q["level"] >= 7 && $infofc["admin"] != "1"){
+			$dberror = "You don't have permission to view this book!";
+			return $dberror;
+		}elseif($q["removed"] == "1"){
+			$dberror = "This book was deleted!";
+			return $dberror;
+		}else{
+			$GLOBALS["q"] = $q;
+		}
+		//vypis detailu jedne vybrane knihy
+	}else{
+		$dberror = $l_k_notfound;
+		return $dberror;
+	}
+}
+function booklist(){
+	foreach($GLOBALS as $name => $value) global $$name;
+	$sql = "SELECT * FROM knih_knihy WHERE knih_knihy.level < 7 AND knih_knihy.removed=0";
+    $result = mysqli_query($link,$sql);
+	$pocet = mysqli_num_rows($result);
+	$nastranku = 30;
+	if(isset($infofc) && $infofc["admin"] == 1){
+		$nastranku = 29;
+	}
+	if (isset($_GET['page']) && is_numeric($_GET['page']) && $_GET['page'] != "" && $_GET['page'] > 0){
+		$page = round($_GET['page']);
+	}else{
+	$page = 1;
+	}
+	$existstrana = ceil($pocet/$nastranku);
+	if($existstrana < $page){
+		$strana = $existstrana;
+	}else{
+		$strana = $page;
+	}
+	$pmin = $strana * $nastranku - $nastranku;
+	if($strana > 1){
+		$predchozi = $strana - 1;
+	}else{
+		$predchozi = 0;
+	}
+	if($existstrana > $strana && $existstrana > 1){
+		$dalsi = $strana + 1;
+	}else{
+		$dalsi = 0;
+	}
+	$sql = "SELECT knih_knihy.id as kid,knih_knihy.name,knih_knihy.author,knih_knihy.level,knih_vypujcky.id as vid,knih_vypujcky.email_uzivatel as email,knih_vypujcky.datum_vypujcky as datumvyp,knih_vypujcky.bor_months as vypdoba,0 as res FROM knih_knihy LEFT JOIN knih_vypujcky ON knih_knihy.id=knih_vypujcky.id_kniha AND knih_vypujcky.datum_vraceni='0000-00-00' WHERE knih_knihy.level < 7 AND knih_knihy.removed=0 AND knih_knihy.id NOT IN (SELECT id_kniha FROM knih_rezervace WHERE knih_rezervace.id_kniha=knih_knihy.id) UNION ALL
+	SELECT knih_knihy.id as kid,knih_knihy.name,knih_knihy.author,knih_knihy.level,knih_vypujcky.id as vid,knih_vypujcky.email_uzivatel as email,knih_vypujcky.datum_vypujcky as datumvyp,knih_vypujcky.bor_months as vypdoba,COUNT(*) as res FROM knih_knihy LEFT JOIN knih_vypujcky ON knih_knihy.id=knih_vypujcky.id_kniha AND knih_vypujcky.datum_vraceni='0000-00-00', knih_rezervace WHERE knih_knihy.level < 7 AND knih_knihy.removed=0 AND knih_rezervace.id_kniha=knih_knihy.id ORDER BY name ASC LIMIT " . $pmin . "," . $nastranku;
+	$result = mysqli_query($link,$sql);
+    if(mysqli_affected_rows($link) >= 1){
+		$subresult = mysqli_query($link,"SELECT * FROM knih_rezervace WHERE email_uzivatel='" . $infofc["email"] . "'");
+		if(mysqli_affected_rows($link) >= 1){
+			$e = 0;
+			while($d = mysqli_fetch_assoc($subresult)){
+				$myres[$e] = $d["id_kniha"];
+				$e++;
+			}
+		}else{
+			$myres = "";
+		}
+        while($q = mysqli_fetch_assoc($result)){
+			echo '
+			<div class="book">
+            <div class="card">
+              <div class="wraper">
+                <div class="btn-group float-right buttons" role="group">';
+			if(isset($infofc["admin"]) && $infofc["admin"] == 1){
+				echo '
+                  <button type="button" class="button edit" ><i class="fas fa-edit"></i></button>
+                  <button type="button" class="button delete" name="button" data-toggle="modal" data-target="#del_modal"><i class="far fa-times-circle"></i></button>
+				 ';
+			}
+			echo '
+                </div>
+                <div class="card-body">
+                  <div>
+                    <a href="bookdetail.php?id=' . $q["kid"] . '" class="title-link"><div class="twolines"><h3 class="title-ln">' . $q["name"] . '</h3></div></a>
+                    <small>Written By ' . $q["author"] . '</small>
+                  </div>
+                  <div class="float: left;">
+                    <p>Level: ' . $q["level"] . '</p>
+                  </div>
+				  <div class="float-right">
+				  ';
+				if(isset($infofc)){
+				  if($q["vid"] != NULL && $q["res"] >= 3){
+					  $button = '<a href="#" class="btn float-right btn-danger"><strong>Unavailable</strong></a>';
+				  }
+				  if(($q["vid"] != NULL) or ($q["res"] < 3 && $q["res"] >= 1)){
+					  $button = '<a href="#" class="btn float-right btn-warning" style="color: white;"><strong>Reserve</strong></a>';
+				  }
+				  if($q["vid"] == NULL && $q["res"] == 0){
+					  $button = '<a href="#" class="btn float-right btn-success"><strong>Book</strong></a>';
+				  }
+				  if($q["email"] == $infofc["email"] && isset($infofc)){
+					  $button = '<a href="#" class="btn float-right btn-info"><strong>Borrowed</strong></a>';
+				  }
+				  if($myres != "" && isset($infofc)){
+				  	foreach($myres as $c){
+					  	if($c == $q["kid"]){
+						  	$button = '<a href="#" class="btn float-right yellow"><strong>Waiting</strong></a>';
+					  	}
+					  }
+					}
+				  echo $button;
+				}
+			echo '
+                  </div>
+                </div>
+              </div>
+            </div>
+		  </div>
+		  ';
+		}
+		echo '
+		<nav aria-label="Pagination" style="width: 100%;">
+			<ul class="pagination mt-5" style="justify-content: center;">
+		';
+		if($existstrana > 1){
+			if($page > 1){
+				echo '<li class="page-item"><a class="page-link" href="?page=' . $predchozi . '">Previous</a></li>';
+			}
+			for($i = 1; $i <= $existstrana; $i++){
+				echo '<li class="page-item"><a class="page-link" href="?page=' . $i . '">' . $i . '</a></li>';
+			}
+			if($page < $existstrana){
+				echo '<li class="page-item"><a class="page-link" href="?page=' . $dalsi . '">Next</a></li>';
+			}
+		}
+		echo '
+            </ul>
+		  </nav>
+		  ';
+    }else{
+        return $dberror = $l_d_nomatch;
+    }
+}
+function getreservations(){
+	foreach($GLOBALS as $name => $value) global $$name;
+	if($infofc["admin"] == "1"){
+		$sql = "SELECT knih_knihy.id as kid,knih_knihy.name,knih_knihy.author,knih_knihy.type,knih_rezervace.id as rid,knih_rezervace.datefrom,knih_rezervace.email_uzivatel,knih_uziv.id as uid FROM knih_rezervace LEFT JOIN knih_knihy ON knih_rezervace.id_kniha=knih_knihy.id LEFT JOIN knih_uziv ON knih_uziv.email=knih_rezervace.email_uzivatel ORDER BY knih_rezervace.email_uzivatel";
+	}else{
+		$sql = "SELECT knih_knihy.id as kid,knih_knihy.name,knih_knihy.author,knih_knihy.type,knih_rezervace.id as rid,knih_rezervace.datefrom,knih_rezervace.email_uzivatel FROM knih_rezervace LEFT JOIN knih_knihy ON knih_rezervace.id_kniha=knih_knihy.id WHERE knih_rezervace.email_uzivatel='" . $infofc["email"] . "'";
+	}
+	$sql = "SELECT * FROM knih_rezervace WHERE ";
+}
+function getborrowings(){
+	foreach($GLOBALS as $name => $value) global $$name;
+	if($infofc["admin"] == "1"){
+		$sql = "";
+	}else{
+		$sql = "";
+	}
+}
+function reservation($idk,$email){
+	foreach($GLOBALS as $name => $value) global $$name;
+	$sql = "SELECT * FROM knih_rezervace WHERE id_kniha='" . $idk . "'";
+	$result = mysqli_query($link,$sql);
+	if(mysqli_affected_rows($result) >= 3){
+		$dberror = $l_r_limit;
+		return $dberror;
+	}else{
+		if(mysqli_affected_rows($link) != 0){
+			while($q = mysqli_fetch_assoc($result)){
+				if($q["email_uzivatel"] == $email){
+					$dbreserr = "KO";
+				}
+			}
+		}
+		if(mysqli_affected_rows($link) == 0 or $dbreserr != "KO"){
+			//dokoncit a provest SQL prikaz s overenim, zda se provedl/neprovedl - dberror
+			$sql = "INSERT";
+		}else{
+			$dberror = $l_r_reserved;
+			return $dberror;
+		}
+	}
+}
+function borrow($idk,$email){
+	foreach($GLOBALS as $name => $value) global $$name;
+	$sql = "";
+	$result = mysqli_query($link,$sql);
+	if(mysqli_affected_rows())
+	$sql = "SELECT knih_knihy.id as kid,knih_vypujcky.id_kniha as idk,knih_vypujcky.email_uzivatel as emailuz FROM knih_knihy LEFT JOIN knih_vypujcky ON knih_knihy.id=knih_vypujcky.id_kniha WHERE id='" . $idk . "'";
+	$q = mysqli_fetch_assoc($result);
+	if($q["kid"] == $q["idk"]){
+		if($q["emailuz"] == $email){
+			$sql = "DELETE knih_rezervace WHERE id=" . $q["kid"];
+			//jiz rezervovana uzivatelem
+		}
+	}else{
+		//SOMETHING WILL BE HERE
+	}
+}
+function newbook(){
+	foreach($GLOBALS as $name => $value) global $$name;
+	if(!isset($_POST["copies"]) or $_POST["copies"] == "" or !is_numeric($_POST["copies"])){
+		$nberror["copies"] = "";
+	}
+	if(!isset($_POST["name"]) or $_POST["name"] == "" or preg_match("/^[a-žA-Ž0-9 ]+$/", $_POST["name"]) !== 1){
+		$nberror["name"] = "";
+	}
+	if($_POST["author"] != "" && preg_match("/^[a-žA-Ž0-9 ]+$/", $_POST["author"]) !== 1){
+		$nberror["author"] = "";
+	}
+	if($_POST["isbn"] != "" && !is_numeric($_POST["isbn"])){
+		$nberror["isbn"] = "";
+	}
+	if($_POST["numpg"] != "" && !is_numeric($_POST["numpg"])){
+		$nberror["numpg"] = "";
+	}
+	if($_POST["pubyear"] != "" && !is_numeric($_POST["pubyear"])){
+		$nberror["pubyear"] = "";
+	}
+	if($_POST["publisher"] != "" &&  preg_match("/^[a-žA-Ž0-9 ]+$/", $_POST["publisher"]) !== 1){
+		$nberror["publisher"] = "";
+	}
+	if(!isset($_POST["level"]) or $_POST["level"] == "" or !is_numeric($_POST["level"])){
+		$nberror["level"] = "";
+	}
+	if($_POST["topic"] != "" && !is_numeric($_POST["topic"])){
+		$nberror["topic"] = "";
+	}
+	if($_POST["edition"] != "" && !is_numeric($_POST["edition"])){
+		$nberror["edition"] = "";
+	}
+	if($_POST["genre"] != "" &&  !is_numeric($_POST["genre"])){
+		$nberror["genre"] = "";
+	}
+	if(!isset($nberror)){
+		$result = mysqli_query($spojeni,"INSERT INTO knih_knihy (name,author,isbn,numpg,pubyear,publisher,level,topic,edition,genre,anotation,notes,type,removed) VALUES ('" . $_POST["name"] . "','" . $_POST["author"] . "','" . $_POST["isbn"] . "','" . $_POST["numpg"] . "','" . $_POST["pubyear"] . "','" . $_POST["publisher"] . "','" . $_POST["level"] . "','" . $_POST["topic"] . "','" . $_POST["edition"] . "','" . $_POST["genre"] . "','" . $_POST["anotation"] . "','" . $_POST["notes"] . "','" . $_POST["type"] . "','" . $_POST["removed"] . "')");
+		if(mysqli_affected_rows($link) == 1){
+			$response = $l_nb_ok;
+			return $response;
+		}else{
+			$dberror = $l_nb_failed;
+			return $dberror;
+		}
+	}
+}
+function editbook($id){
+	if(is_numeric($id)){
+		foreach($GLOBALS as $name => $value) global $$name;
+		if(!isset($_POST["copies"]) or $_POST["copies"] == "" or !is_numeric($_POST["copies"])){
+			$nberror["copies"] = "";
+		}
+		if(!isset($_POST["name"]) or $_POST["name"] == "" or preg_match("/^[a-žA-Ž0-9 ]+$/", $_POST["name"]) !== 1){
+			$nberror["name"] = "";
+		}
+		if($_POST["author"] != "" && preg_match("/^[a-žA-Ž0-9 ]+$/", $_POST["author"]) !== 1){
+			$nberror["author"] = "";
+		}
+		if($_POST["isbn"] != "" && !is_numeric($_POST["isbn"])){
+			$nberror["isbn"] = "";
+		}
+		if($_POST["numpg"] != "" && !is_numeric($_POST["numpg"])){
+			$nberror["numpg"] = "";
+		}
+		if($_POST["pubyear"] != "" && !is_numeric($_POST["pubyear"])){
+			$nberror["pubyear"] = "";
+		}
+		if($_POST["publisher"] != "" &&  preg_match("/^[a-žA-Ž0-9 ]+$/", $_POST["publisher"]) !== 1){
+			$nberror["publisher"] = "";
+		}
+		if(!isset($_POST["level"]) or $_POST["level"] == "" or !is_numeric($_POST["level"])){
+			$nberror["level"] = "";
+		}
+		if($_POST["topic"] != "" && !is_numeric($_POST["topic"])){
+			$nberror["topic"] = "";
+		}
+		if($_POST["edition"] != "" && !is_numeric($_POST["edition"])){
+			$nberror["edition"] = "";
+		}
+		if($_POST["genre"] != "" &&  !is_numeric($_POST["genre"])){
+			$nberror["genre"] = "";
+		}
+		if(!isset($nberror)){
+			$result = mysqli_query($spojeni,"UPDATE knih_knihy SET name='" . $_POST["name"] . "',author='" . $_POST["author"] . "',isbn='" . $_POST["isbn"] . "',numpg='" . $_POST["numpg"] . "',pubyear='" . $_POST["pubyear"] . "',publisher='" . $_POST["publisher"] . "',level='" . $_POST["level"] . "',topic='" . $_POST["topic"] . "',edition='" . $_POST["edition"] . "',genre='" . $_POST["genre"] . "',anotation='" . $_POST["anotation"] . "',notes='" . $_POST["notes"] . "',type='" . $_POST["type"] . "' WHERE id='" . $id . "'");
+			if(mysqli_affected_rows($link) == 1){
+				$response = $l_nb_ok;
+				return $response;
+			}else{
+				$dberror = $l_nb_failed;
+				return $dberror;
+			}
+		}
+	}else{
+		$dberror = "ID of Book must be numeric!";
+		return $dberror;
+	}
+}
+function deletebook($id){
+	if(is_numeric($id)){
+		$result = mysqli_query($spojeni,"UPDATE knih_knihy SET removed='1' WHERE id='" . $id . "'");
+	}else{
+		$dberror = "ID of Book must be numeric!";
+	}
+}
+?>
