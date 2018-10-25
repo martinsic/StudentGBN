@@ -44,18 +44,21 @@
 
     <section class="jumbotron text-center" style="background: transparent !important">
       <div class="container">
-        <h1 class="jumbotron-heading">Library example</h1>
+        <h1 class="jumbotron-heading">List of Books</h1>
         <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
       </div>
     </section>
-
-
+    <div class=search>
+    <form class="form-inline md-form form-sm active-purple active-purple-2 mt-2">
+      <i class="fa fa-search" aria-hidden="true"></i>
+      <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search" aria-label="Search">
+    </form>
+    </div>
     <div class="container">
       <div class="clearfix"></div>
       <div class="row" style="margin: 0 auto;">
-
         <div class="book">
-        <button class="addbtn button" style="width: 100%;, height: 100%;">
+        <button class="addbtn button" style="width: 100%;, height: 100%;" data-toggle="modal" data-target="#addModal">
           <div class="card" style="height: 100%;">
             <div class="wraper">
             <div class="card-body">
@@ -64,13 +67,12 @@
               </div>
               <div class="float-right">
                 <h1>Add <br>a Book</h1>
-              </div>  
+              </div>
             </div>
           </div>
           </div>
           </button>
         </div>
-
 
         <div class="book">
           <div class="card">
@@ -181,7 +183,7 @@
                 <p>Level: 5</p>
               </div>
               <div class="float-right">
-                <a href="#" class="btn btn-primary float-right btn-success"><strong>Book</strong></a>
+                <a href="#" class="btn btn-primary float-right btn-success"><strong>Lend</strong></a>
               </div>
             </div>
           </div>
